@@ -1,6 +1,8 @@
 const state = {
+  // TODO remove "current" from names?
   currentWindow: undefined,
   friends: config.friends,
+  currentFriend: undefined,
 };
 
 document.addEventListener("DOMContentLoaded", () => {
@@ -18,16 +20,36 @@ function handleButtonClick() {
     state.currentWindow.close();
   }
 
-  if (state.friends.length) {
-    const url = CHAT_URL_PREFIX + state.friends.pop(0);
+  if (state.currentFriend) {
+    const url = CALL_URL_PREFIX + state.currentFriend;
     state.currentWindow = open(url, null, `height=${config.height},width=${config.width}`)
-    checkEmpty();
+    nextFriend();
+  } else  {
+    state.currentFriend = state.friends.pop(0);
+    const url = CHAT_URL_PREFIX + state.currentFriend;
+    state.currentWindow = open(url, null, `height=${config.height},width=${config.width}`)
+    $('body').classList.add('call');
   }
+}
+
+function handleSkip() {
+  if (state.currentWindow) {
+    state.currentWindow.close();
+  }
+
+  nextFriend();
+}
+
+function nextFriend() {
+  state.currentFriend = undefined;
+  $('body').classList.remove('call');
+  checkEmpty();
 }
 
 function checkEmpty() {
   if (!state.friends.length) {
-    $('#the-button').classList.add('no-more');
+    $('.the-button').classList.add('no-more');
+    $('.the-button').disabled = true;
   }
 }
 

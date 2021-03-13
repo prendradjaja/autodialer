@@ -10,22 +10,39 @@ body.blurred {
 button {
   height: 100px;
   width: 400px;
-  background: green;
   color: white;
+  display: block;
+}
+
+.the-button {
+  background: green;
+}
+
+.skip {
+  background: #333333;
+  display: none;
+}
+
+body.call .skip {
+  display: block;
 }
 
 body.blurred button {
   opacity: 0.5;
 }
 
-button.no-more {
+.the-button.no-more {
   background: #a20000;
 }
 
-button:not(.no-more) .no-more-content {
+.the-button:not(.no-more) .no-more-content {
   display: none;
 }
 
-button.no-more .default-content {
+.the-button.no-more .default-content {
   display: none;
+}
+
+body.call .the-button {
+  background: #006ad8;
 }
