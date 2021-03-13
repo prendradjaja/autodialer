@@ -1,0 +1,10 @@
+const config = {
+  height: 900,
+  width: 1200,
+  friends: [
+    // YOUR FRIENDS' NUMERIC USER IDS GO HERE
+    //
+    // i.e. https://www.messenger.com/t/<NUMERIC USER ID>
+    // NOT  https://www.messenger.com/t/<CUSTOM FACEBOOK USERNAME>
+  ],
+};

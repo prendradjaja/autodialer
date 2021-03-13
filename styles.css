@@ -1,0 +1,31 @@
+body {
+  background: black;
+  color: white;
+}
+
+body.blurred {
+  background: gray;
+}
+
+button {
+  height: 100px;
+  width: 400px;
+  background: green;
+  color: white;
+}
+
+body.blurred button {
+  opacity: 0.5;
+}
+
+button.no-more {
+  background: #a20000;
+}
+
+button:not(.no-more) .no-more-content {
+  display: none;
+}
+
+button.no-more .default-content {
+  display: none;
+}
